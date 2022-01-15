@@ -8,12 +8,13 @@ object main {
 //    val logic: Logic = new Logic
 //    val answer = logic.math((a, b) => a * b * b + a)(2, 3)
 //    println(answer)
-//      val counter: Counter = new Counter
-//      counter.count(x => x + x)(1, 1000)
+    val counter: Counter = new Counter
+    counter.countBy2()
 //      val sum: Sum = new Sum
 //      println(sum.sum(x => x * 2)(1, 3))
 
-    val fixedPoint = new FixedPoint()
-    println(fixedPoint.sqrt(25))
+//    val fixedPoint = new FixedPoint()
+//    println(fixedPoint.sqrt(25))
+
   }
 }
