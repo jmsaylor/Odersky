@@ -16,20 +16,20 @@ object Rational {
 }
 
 class Rational(x: Int, y: Int) {
-  def numer = x
-  def denom = y
+  def numerator: Int = x
+  def denominator: Int = y
 
   def add(r: Rational): Rational =
-    Rational(numer * r.denom + r.numer * denom, denom * r.denom)
+    Rational(numerator * r.denominator + r.numerator * denominator, denominator * r.denominator)
 
   def sub(r: Rational): Rational =
-    Rational(numer * r.denom - r.numer * denom, denom * r.denom)
+    Rational(numerator * r.denominator - r.numerator * denominator, denominator * r.denominator)
 
   def mul(r: Rational): Rational =
-    Rational(numer * r.numer, denom * r.denom)
+    Rational(numerator * r.numerator, denominator * r.denominator)
 
   def div(r: Rational): Rational =
-    Rational(numer * r.denom, denom * r.numer)
+    Rational(numerator * r.denominator, denominator * r.numerator)
 
-  override def toString: String = s"$numer/$denom"
+  override def toString: String = s"$numerator/$denominator"
 }
