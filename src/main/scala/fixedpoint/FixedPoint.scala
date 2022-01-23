@@ -1,6 +1,8 @@
 package org.saylor.odersky
 package fixedpoint
 
+import scala.annotation.tailrec
+
 class FixedPoint {
 
   val tolerance = 0.001
@@ -12,6 +14,8 @@ class FixedPoint {
     abs((x - y) / x) < tolerance
 
   def fixedPoint(f: Double => Double)(firstGuess: Double): Double =
+
+    @tailrec
     def iterate(guess: Double): Double =
       val next = f(guess)
       println(next)
