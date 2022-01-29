@@ -5,8 +5,9 @@ object FunctionalSets extends App {
   val funcSet = new FunctionalSets
 //  println(funcSet.contains(x => x < 0, -1))
 
-  def oneSet = funcSet.singletonSet(1);
-  println(funcSet.contains(oneSet, 1))
+//  def oneSet = funcSet.singletonSet(1);
+//  println(funcSet.contains(oneSet, 1))
+
 }
 
 class FunctionalSets extends FunSetsInterface {
@@ -14,9 +15,10 @@ class FunctionalSets extends FunSetsInterface {
 
   def contains(f: FuncSet, elem: Int): Boolean = f(elem)
 
-  override def singletonSet(elem: Int): FunSet = (x: Int) => x == elem
+  override def singletonSet(elem: Int): FunSet = _ == elem
+//  override def singletonSet(elem: Int): FunSet = (x: Int) => x == elem
 
-  override def union(s: FunSet, t: FunSet): FunSet = ???
+  override def union(s: FunSet, t: FunSet): FunSet = (x: Int) => s(x) || t(x)
 
   override def intersect(s: FunSet, t: Int => Boolean): FunSet = ???
 
