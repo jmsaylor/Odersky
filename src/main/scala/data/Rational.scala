@@ -10,7 +10,12 @@ object Rational {
     val fifteen = new Rational(30, 2)
     val two = new Rational(4, 2)
 
-    println(ten.sub2(two).div(ten))
+    println(new Rational(450))
+
+//    println(ten.max(two))
+//    println(fifteen.min(hundred))
+//
+//    println(ten.sub2(two).div(ten))
 //    println(hundred.div(ten).sub(two))
 //    println(hundred.mul(ten).mul(two))
 //    println(fifteen.sub(ten))
@@ -19,6 +24,8 @@ object Rational {
 }
 
 class Rational(x: Int, y: Int) {
+  def this(x: Int) = this(x, 1)
+
   @tailrec private def gcd(x: Int, y: Int): Int =
     if y == 0 then x else gcd(y, x % y)
   private val g: Int = gcd(x, y)
