@@ -1,12 +1,14 @@
 package org.saylor.odersky
 package data
 
+import scala.annotation.tailrec
+
 object Rational {
   def main(args: Array[String]): Unit =
     val hundred = new Rational(100, 1)
     val ten = new Rational(10, 1)
     val fifteen = new Rational(30, 2)
-    val two = new Rational(2, 1)
+    val two = new Rational(4, 2)
 
     println(ten.sub2(two).div(ten))
 //    println(hundred.div(ten).sub(two))
@@ -17,8 +19,12 @@ object Rational {
 }
 
 class Rational(x: Int, y: Int) {
-  def numerator: Int = x
-  def denominator: Int = y
+  @tailrec private def gcd(x: Int, y: Int): Int =
+    if y == 0 then x else gcd(y, x % y)
+  private val g: Int = gcd(x, y)
+
+  def numerator: Int = x / g
+  def denominator: Int = y / g
 
   def neg: Rational = Rational(-numerator, denominator)
 
@@ -35,6 +41,14 @@ class Rational(x: Int, y: Int) {
 
   def div(r: Rational): Rational =
     Rational(numerator * r.denominator, denominator * r.numerator)
+
+  private def less(r: Rational): Boolean = numerator * r.denominator < denominator * r.numerator
+
+  def min(that: Rational): Rational =
+    if this.less(that) then this else that
+
+  def max(that: Rational): Rational =
+    if this.less(that) then that else this
 
   override def toString: String = s"$numerator/$denominator"
 }
